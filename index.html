@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Georgios Xydias</title>
+  <style>
+    body {
+      background: #fff;
+      font-family: Georgia, serif;
+      color: #333;
+      margin: 0;
+      padding-bottom: 1.2em;
+      line-height: 1.6;
+    }
+    #layout-content {
+      background: #f2f2f2;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.6em 1em 1.2em;
+    }
+    #toptitle {
+      text-align: center;
+      padding-top: 0.5em;
+    }
+    #toptitle span {
+      display: inline-block;
+      font-size: 1.8em;
+      max-width: 100%;
+    }
+    #toptitle + p img {
+      display: block;
+      margin: 2em auto;
+      width: 10em;
+      max-width: 100%;
+      height: auto;
+    }
+    #toptitle + p + p {
+      text-align: center;
+      margin-top: 0.6em;
+      line-height: 1.6em;
+    }
+    h1, h2, h3, h4 {
+      color: #0000aa;
+      margin-top: 1.1em;
+      margin-bottom: 0.3em;
+      padding-bottom: 0.18em;
+      line-height: 1.6;
+      border-bottom: 0 solid #ccc;
+      scroll-margin-top: 1.6em;
+    }
+    h1 {
+      font-size: 1.6em;
+      border-bottom: 2px solid #0000aa;
+    }
+    h2 {
+      font-size: 1.25em;
+      padding-top: 0.5em;
+      color: #0000aa;
+    }
+    h3 {
+      font-size: 1.1em;
+      border-bottom: none;
+    }
+    p {
+      margin: 0.3em 0 0.8em;
+      line-height: 1.6;
+    }
+    ul, ol {
+      margin: 0.3em 0 0.85em;
+      padding-left: 1.6em;
+    }
+    li {
+      line-height: 1.6;
+      margin-bottom: 0.3em;
+    }
+    a {
+      color: #0000aa;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #0000aa;
+      text-decoration: underline;
+    }
+    .resume-button-wrap {
+      text-align: center;
+      margin: 1em 0 1.4em;
+    }
+    .resume-button {
+      display: inline-block;
+      background: #0000aa;
+      color: #fff !important;
+      padding: 0.65em 1.2em;
+      border-radius: 6px;
+      border: 1px solid #0000aa;
+      font-weight: bold;
+      text-decoration: none !important;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .resume-button:hover {
+      background: #0D5EAF;
+      border-color: #0D5EAF;
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    #top-menu {
+      display: none !important;
+    }
+    .mobile-nav {
+      display: block;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1002;
+    }
+    #hamburger-btn {
+      font-size: 22px;
+      background: #f2f2f2;
+      border: 1px solid #ccc;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: inherit;
+      color: #0000aa;
+      user-select: none;
+    }
+    @media (min-width: 769px) {
+      #hamburger-btn::after {
+        content: " Menu";
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+    }
+    @media (max-width: 768px) {
+      #hamburger-btn::after {
+        content: "";
+      }
+      #hamburger-btn {
+        font-size: 26px;
+        padding: 7px 13px;
+      }
+    }
+    .menu-toggle {
+      display: none;
+    }
+    #layout-menu {
+      display: none !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background: #f6f6f6;
+      border-right: 1px solid #ddd;
+      padding: 70px 1em 1em 1em;
+      z-index: 1001;
+      overflow-y: auto;
+      box-shadow: 3px 0 12px rgba(0,0,0,0.13);
+    }
+    .menu-toggle:checked ~ #layout-menu {
+      display: block !important;
+    }
+    #layout-menu a {
+      display: block;
+      padding: 7px 12px;
+      color: #0D5EAF;
+      font-size: 0.95em;
+      border-radius: 4px;
+      margin-bottom: 2px;
+    }
+    #layout-menu a:hover {
+      background: #e8e8e8;
+      text-decoration: none;
+    }
+    @media (min-width: 769px) {
+      #layout-content {
+        padding-top: 0.8em;
+      }
+    }
+    @media (max-width: 768px) {
+      #layout-content {
+        padding-top: 3.6em;
+      }
+    }
+    img {
+      border: 1px;
+      max-width: 100%;
+      height: auto;
+    }
+    strong {
+      font-weight: bold;
+    }
+    em {
+      font-style: italic;
+    }
+    pre, tt {
+      font-family: ui-monospace, monospace;
+      font-size: 0.88em;
+      background: #f7f7f7;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+    }
+    pre {
+      padding: 0.7em;
+      overflow-x: auto;
+    }
+    table {
+      border: 0 solid #ccc;
+      border-collapse: collapse;
+      margin: 1em 0;
+    }
+    td, th {
+      padding: 5px 8px;
+      border: 0 solid #ddd;
+      text-align: left;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 700px) {
+      table.mobile-stack,
+      table.mobile-stack tr,
+      table.mobile-stack td {
+        display: block;
+        width: 100% !important;
+      }
+      table.mobile-stack td {
+        padding-bottom: 12px;
+      }
+    }
+    @media print {
+      .mobile-nav,
+      #layout-menu,
+      #top-menu,
+      .resume-button-wrap {
+        display: none !important;
+      }
+      body {
+        font-size: 10.5pt;
+        color: #000;
+        background: #fff;
+      }
+      #layout-content {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
+      h1, h2, h3 {
+        color: #000;
+        border-bottom: 0 solid #000;
+      }
+      a {
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="layout-content">
+  <div id="toptitle">
+    <span><strong style="color: #0000aa;">Georgios Xydias</strong></span>
+  </div>
+  <p><img src="./gxydias.jpeg" alt="Georgios Xydias" style="width:14em"></p>
+  <p>
+    <strong>Electrical &amp; Computer Engineer | Data Science &amp; AI Specialist</strong><br />
+    <a href="https://www.linkedin.com/in/georgios-xydias/" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+    <a href="https://github.com/GiX007" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="mailto:gxydias.ece@gmail.com">gxydias.ece@gmail.com</a> | +30 697-173-0272
+  </p>
+</br>
+  <div class="resume-button-wrap">
+    <a class="resume-button" href="./george_xydias_resume.pdf" download="george_xydias_resume.pdf">Download Resume</a>
+  </div>
+
+
+<h1 id="sec:about">About</h1>
+<p>
+  I hold a Diploma (5-year program) in Electrical and Computer Engineering from the Technical University of Crete, an MSc in Logistics Management from the University of Piraeus, and an MSc in Data Science and AI from the National and Kapodistrian University of Athens.
+</p>
+<p>
+  I bring a distinctive mix of deep engineering foundations, logistics and operations expertise, and advanced AI capabilities, with extensive hands-on experience through projects in LLM systems, time-series forecasting, and computer vision.
+</p>
+<p>
+  My professional background includes business data analytics in the hospitality and real estate sectors.
+</p>
+<p>
+  I combine attention to detail with a practical mindset, leveraging my diverse education and experience to deliver tailored, innovative, and effective solutions with real-world impact.
+</p>
+<p>
+  <strong>
+    I am actively pursuing industry roles focused on AI engineering/applications and data-driven solutions.
+  </strong>
+</p>
+  <h1 id="sec:education">Education</h1>
+  <h2 id="sec:edu_degrees">Degrees</h2>
+  <ul>
+  <li>
+    <strong>M.Sc., Data Science and Information Technologies (Big Data &amp; AI Specialization)</strong><br />
+    <em>National and Kapodistrian University of Athens, 2024 – 2026</em><br />
+    <em>
+      Thesis:
+      <a href="https://github.com/GiX007/mlp4cs/blob/main/docs/llm_pipeline_customer_sevice_thesis.pdf" target="_blank" rel="noopener noreferrer">"Modular LLM Pipeline for Task-Oriented Customer Service Dialogue"</a>
+    </em>
+  <ul>
+    <li>In addition to the thesis, completed multiple hands-on graduate projects in machine learning, AI systems, LLM applications, computer vision, and time-series forecasting.</li>
+  </ul>
+    </li>
+
+  <li>
+    <strong>M.Sc., Logistics Management</strong><br />
+    <em>University of Piraeus, 2013 – 2015</em>
+  <ul>
+    <li>Graduate studies in logistics, operations, planning, and analytical decision making.</li>
+  </ul>
+</li>
+
+
+  <li>
+    <strong>Diploma (5-year program, equivalent to B.Sc. and M.Eng.), Electrical and Computer Engineering</strong><br />
+    <em>Technical University of Crete, 2004 – 2010</em>
+  <ul>
+    <li>Engineering foundation in mathematics, electronics, computing, analytical reasoning, and technical problem solving.</li>
+  </ul>
+</li>
+</ul>
+
+  <h2 id="sec:edu_certifications">Certifications</h2>
+<ul>
+  <li>
+    <strong>PyTorch for Deep Learning</strong> – DeepLearning.AI (Nov 2025)<br>
+  </li>
+  <li>
+    <strong>Retrieval-Augmented Generation (RAG)</strong> – DeepLearning.AI (Oct 2025)
+  </li>
+  <li>
+    <strong>Agentic AI</strong> – DeepLearning.AI (Oct 2025)
+  </li>
+  <li>
+    <strong>Natural Language Processing</strong> – DeepLearning.AI (Oct 2020)<br>
+  </li>
+  <li>
+    <strong>Deep Learning Specialization</strong> – DeepLearning.AI (Sep 2019)<br>
+  </li>
+  <li>
+    <strong>Machine Learning</strong> – Stanford University (Jul 2019)<br>
+  </li>
+</ul>
+<h1 id="sec:projects">Selected Projects</h1>
+<ul>
+  <li>
+    <strong>Modular LLM Pipeline for Customer Service (MSc Thesis)</strong> | 
+    <a href="https://github.com/GiX007/mlp4cs" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+    <a href="https://github.com/GiX007/mlp4cs/blob/main/docs/llm_pipeline_customer_sevice_thesis.pdf" target="_blank" rel="noopener noreferrer">Thesis PDF</a>
+    <ul>
+      <li>Built a modular multi-LLM pipeline for task-oriented dialogue on MultiWOZ 2.2.</li>
+      <li>Compared a single-LLM baseline with modular zero-shot and LoRA fine-tuned approaches.</li>
+      <li>Most relevant project for LLM engineering, modular AI systems, and applied NLP roles.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>LLM from Scratch</strong> | 
+    <a href="https://github.com/GiX007/llm-from-scratch" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <ul>
+      <li>Implemented Transformer architecture and core LLM components from scratch in PyTorch, covering attention, tokenization, and training.</li>
+      <li>Built for deep understanding of transformer internals rather than framework usage.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>CLARITY Classification NLP (SemEval 2026 Task 6)</strong> | 
+    <a href="https://github.com/GiX007/clarity-classification-nlp" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <ul>
+      <li>End-to-end classification of political interview question-answer pairs by response clarity, on the SemEval 2026 Task 6 (CLARITY) benchmark.</li>
+      <li>Experiments progressing from classical ML baselines to fine-tuned transformer encoders, LLM-based approaches, and a multi-agent prompting pipeline.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Auto-Suggest, Offline Component (paper replication)</strong> | 
+    <a href="https://github.com/GiX007/auto-suggest-offline" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <ul>
+      <li>Replicated the offline component of the Auto-Suggest system (Yeye He et al.) for learning pandas data preparation operations from real-world Jupyter notebooks.</li>
+      <li>Built a reproducible two-phase pipeline: crawling and replaying GitHub notebooks to log operator usage, then training ML and optimization-based models to recommend how to perform each operator and predict the next one.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Weather Time Series Forecasting</strong> | 
+    <a href="https://github.com/GiX007/weather-time-series-forecasting" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <ul>
+      <li>Developed forecasting pipelines using autoregressive models, RNNs, attention mechanisms, and Transformers.</li>
+      <li>Worked across multiple temporal resolutions and prediction horizons on weather data.</li>
+      <li>Strong applied ML and time-series project with clear modeling breadth.</li>
+    </ul>
+  </li>
+
+
+  <li>
+    <strong>SeaDronesSee SAR Object Detection</strong> | 
+    <a href="https://github.com/GiX007/sea-sar-detectors" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <ul>
+      <li>Implemented and evaluated detectors including YOLOv1, Faster R-CNN, RetinaNet, YOLOv8, and DETR.</li>
+      <li>Focused on maritime drone imagery and small-object detection under realistic conditions.</li>
+      <li>Adds an application-driven computer vision project to the portfolio.</li>
+    </ul>
+  </li>
+
+
+</ul>
+  <h1 id="sec:experience">Professional Experience</h1>
+<ul>
+  <li>
+    <strong>Finance &amp; F&amp;B Manager</strong> | Interni Restaurant, Full-time, Mykonos, Greece | May 2019 – Oct 2024
+    <ul>
+      <li>Led financial and operational data analytics for a high-volume hospitality business, focusing on sales, demand forecasting, cost control, and performance monitoring.</li>
+      <li>Analyzed sales, demand, and cost time-series data to support forecasting-oriented planning and data-driven operational decisions.</li>
+      <li>Designed and maintained internal data structures and reporting pipelines integrating POS and inventory systems, strengthening hands-on experience in data processing, business intelligence, and decision-support workflows.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>Real Estate Associate</strong> | Delsk Group Greece, Full-time, Athens, Greece | Oct 2016 – May 2019
+    <ul>
+      <li>Conducted financial and comparative data analysis of residential real estate opportunities using pricing and client-constraint data.</li>
+      <li>Prepared structured analytical reports and comparative evaluations to support investment decisions.</li>
+    </ul>
+  </li>
+
+  <li>
+    <strong>High School Tutor, Math &amp; Computer Science</strong> | Self-Employed, Athens | Sep 2010 – Sep 2013
+    <ul>
+      <li>Tutored students in mathematics and introductory programming.</li>
+    </ul>
+  </li>
+</ul>
+  <h1 id="sec:skills">Technical Skills</h1>
+<ul>
+  <li><strong>AI / Machine Learning:</strong> Python, PyTorch, Large Language Models, LoRA fine-tuning, Modular multi-LLM pipelines, Zero-shot approaches, Retrieval-Augmented Generation (RAG), Agentic workflows</li>
+  <li><strong>Time Series &amp; Forecasting:</strong> Autoregressive models, RNNs, attention mechanisms, Transformers, Dynamic Time Warping</li>
+  <li><strong>Computer Vision:</strong> YOLOv1, YOLOv8, Faster R-CNN, RetinaNet, DETR</li>
+  <li><strong>Data &amp; Analytics:</strong> Extensive hands-on experience in data preprocessing, exploratory analysis, forecasting, business intelligence, and reporting pipelines developed across multi-year roles in hospitality and real estate</li>
+</ul>
+  <h1 id="sec:prof_strengths">Professional Strengths</h1>
+<ul>
+  <li>Unique interdisciplinary profile combining electrical &amp; computer engineering, logistics, and advanced AI</li>
+  <li>Extensive hands-on experience in business data analytics across hospitality and real estate</li>
+  <li>In-depth applied AI project work spanning LLM systems, time-series forecasting, and computer vision</li>
+  <li>Practical problem solving with strong business awareness</li>
+  <li>Self-directed learning and end-to-end implementation focus</li>
+</ul>
+</div>
+</body>
+</html>
